@@ -1,0 +1,20 @@
+#!/usr/bin/bash -e
+
+export DISTRO=production
+readonly SDK_DIR="$BUILDDIR/../sdks"
+
+for MACHINE in "x86-builder" "raspberrypi3-64"; do
+    export MACHINE
+
+    if [[ "$MACHINE" == "x86-builder" ]]; then
+        IMAGE=dev-system    
+    else
+        IMAGE=system
+    fi
+
+    bitbake "$IMAGE"
+
+    pushd "$SDK_DIR"
+    ln -s -f "$(realpath --relative-to=$SDK_DIR $BUILDDIR/tmp-musl/deploy/images/$MACHINE/$IMAGE-$MACHINE.tar.gz)" "$MACHINE.tar.gz"
+    popd
+done

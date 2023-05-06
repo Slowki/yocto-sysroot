@@ -1,0 +1,10 @@
+#!/bin/bash
+
+readonly SCRIPT_DIR="$(dirname -- "${BASH_SOURCE[0]:-$0}")"
+
+docker run --rm -it \
+    -v "$(realpath $SCRIPT_DIR/build):/poky/build" \
+    -v "$(realpath $SCRIPT_DIR/meta-custom):/poky/meta-custom" \
+    -v "$(realpath $SCRIPT_DIR/sdks):/poky/sdks" \
+    -v "$(realpath $SCRIPT_DIR/scripts):/scripts" \
+    yocto "$@"

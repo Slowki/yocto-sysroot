@@ -1,0 +1,1 @@
+inherit custom-dev-image
