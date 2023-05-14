@@ -40,12 +40,10 @@ IMAGE_INSTALL:append = " \
     libstd-rs \
     libxkbcommon \
     lldb \
-    libegl-mesa \
-    libegl-mesa-dev \
-    libgl-mesa-dev \
-    mesa \
-    mesa-dev \
-    mesa-vulkan-drivers \
+    libegl \
+    libegl-dev \
+    libgl \
+    libgl-dev \
     openssl \
     openssl-dev \
     openssl-staticdev \
